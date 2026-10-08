@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Scan Result</title>
+
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='style.css') }}">
+</head>
+
+<body>
+
+<div class="container">
+
+    <div class="card">
+
+        <div class="security-icon">
+            🛡️
+        </div>
+
+        <h1>Scan Result</h1>
+
+        <div class="url-box">
+
+            <strong>Scanned URL</strong>
+
+            <p>{{ url }}</p>
+
+        </div>
+
+        <div class="result">
+
+            <h2>{{ result.status }}</h2>
+
+            <p class="score">
+                Risk Score:
+                <strong>{{ result.score }}/100</strong>
+            </p>
+
+        </div>
+
+        <h3>Security Analysis</h3>
+
+        <ul class="reasons">
+
+            {% for reason in result.reasons %}
+
+                <li>
+                    {{ reason }}
+                </li>
+
+            {% endfor %}
+
+        </ul>
+
+        <a href="/" class="back-button">
+            ← Scan Another URL
+        </a>
+
+    </div>
+
+</div>
+
+</body>
+</html>
